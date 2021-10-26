@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>페이징</title>
+  <style>
+    body{
+      transition: background 2.5s cubic-bezier(0.085, 0.340, 0.640, 0.830);
+    }
+    h1 {
+      font-size: 50px;
+    }
+
+    button {
+      font-size: 20px;
+      padding: 10px 30px;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+  </style>
+  <script>
+    function load() {
+      const prevBtn =document.querySelector('.prevBtn')
+      const nextBtn =document.querySelector('.nextBtn')
+      const h1 =document.getElementsByTagName('h1')[0]
+      let bgColorArr = ['#85FFBD','#FFFB7D',"#E0C3FC","#000BDE"] 
+      let totalNum = bgColorArr.length
+      let pageNum = Math.round(Math.random() *(totalNum-1))
+      prevBtn.addEventListener('click',()=>{
+        if(pageNum>0){
+          pageNum--
+        }else{
+          pageNum =totalNum-1
+        }
+        bgColoChange()
+      })
+      nextBtn.addEventListener('click',()=>{
+        if(pageNum <totalNum -1){
+          pageNum++
+        }else{
+          pageNum=0;
+        }
+        bgColoChange()
+      })
+      function bgColoChange(){
+        h1.innerHTML =pageNum+'페이지입니다.'
+        document.getElementsByTagName('body')[0].style.background=bgColorArr[pageNum]
+      }
+      bgColoChange()
+    }
+  </script>
+</head>
+
+
+<body onload="load()">
+  <button type="button" class="prevBtn">prev</button>
+  <button type="button" class="nextBtn">next</button>
+  <h1>0페이지입니다.</h1>
+</body>
+
+</html>
