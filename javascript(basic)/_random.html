@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>가위 바위 보 </title>
+  <style>
+    .starBtn{
+      padding: 20px 10px;
+      cursor: pointer;
+    }
+    h1{
+      font-weight: 500;
+      font-size: 20px
+    }
+  </style>
+  <script>
+    function load(){
+      const btn =document.querySelector('.starBtn')
+      const h1 =document.getElementsByTagName('h1')[0]
+      const handArr= ['가위','바위','보']
+      btn.addEventListener('click',()=>{
+        const ran= Math.round(Math.random()*(handArr.length-1))
+        h1.innerHTML = handArr[ran]
+      })
+    }
+  </script>
+</head>
+<body onload="load()">
+  <button class="starBtn"  type="button">
+    리셋
+  </button>
+  <h1>가위 </h1>
+  
+</body>
+</html>
